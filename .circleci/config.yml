@@ -33,7 +33,9 @@ jobs:
           command: docker load -i /tmp/workspace/image.tar
       - run:
           name: Increase tag
-          command: MY_TAG=$(( $MY_TAG + 1 ))    
+          command: |
+             MY_TAG=$(( $MY_TAG + 1 ))   
+             echo $MY_TAG
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
