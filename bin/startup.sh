@@ -54,7 +54,10 @@ EOF
   if [ "$(ls -A /dbinit.d)" ]; then
     echo "[dbinit.d] found init files"
     SOCKET="/tmp/mysql.sock"
-    mysqld --user=root --skip-networking --socket="${SOCKET}" &
+    #mysqld --user=root --skip-networking --socket="${SOCKET}" &
+    mysqld --user=root --socket="${SOCKET}" &
+     
+     
 
     for i in {30..0}; do
       if mysqladmin --socket="${SOCKET}" ping &>/dev/null; then
@@ -80,4 +83,4 @@ EOF
   fi
 fi
 
-exec /usr/bin/mysqld --user=root --console
+exec /usr/bin/mysqld --skip-networking=0 --user=root --console
