@@ -54,8 +54,8 @@ EOF
   if [ "$(ls -A /dbinit.d)" ]; then
     echo "[dbinit.d] found init files"
     SOCKET="/tmp/mysql.sock"
-    #mysqld --user=root --skip-networking --socket="${SOCKET}" &
-    mysqld --user=root --socket="${SOCKET}" &
+    mysqld --user=root --skip-networking --socket="${SOCKET}" &
+    #mysqld --user=root --socket="${SOCKET}" &
      
      
 
